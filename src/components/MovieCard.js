@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
+import { Link } from 'react-router-dom';
 import StarRatingComponent from 'react-star-rating-component';
 
 
@@ -15,6 +16,8 @@ import StarRatingComponent from 'react-star-rating-component';
     <h5>{movie.date}</h5>
     <Card.Text>
     {movie.description}
+    <Link to ={`/description/${movie.id}`} > <button> Description</button> </Link>
+
     </Card.Text>
     <h5>{movie.genre}</h5>
     <StarRatingComponent 

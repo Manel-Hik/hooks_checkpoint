@@ -1,11 +1,14 @@
 import Button from 'react-bootstrap/Button';
+import Description from './components/Description';
 import {v4 as uuidv4 } from 'uuid';
 import MovieList from './components/MovieList';
 import React ,{useState} from 'react';
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 import Fiilter from './components/Fiilter';
+import Description from './components/Description';
 
 function App() {
 const [keyword, setKeyword] = useState("")
@@ -71,8 +74,13 @@ const addMovie=(movie)=> {
     }
   return (
     <div className="App">
+      <BrowserRouter>
+      
       <Fiilter search={search} setRate={setRate} newRate={newRate}/>
       <MovieList  addMovie={addMovie}  movies={movies.filter(el=> el.rate >=newRate && el.title.toLowerCase().includes(keyword.toLowerCase().trim()))}/>
+     <Route path="/description/:id" render={(props)=>  <Description {...props} movies ={movies}/>} />
+     
+      </BrowserRouter>
     </div>
   );
 }
